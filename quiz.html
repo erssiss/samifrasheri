@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz – Sami Frashëri</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header>
+    <h1>Sami Frashëri</h1>
+    <nav>
+      <a href="SAMI FRASHERI.html">Kreu</a>
+      <a href="rreth.html">Rreth Samiut</a>
+      <a href="veprat.html">Veprat</a>
+      <a href="quiz.html" class="active">Quiz</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Testo njohuritë për Sami Frashërin</h2>
+    <form id="quizForm">
+      <div class="question">
+        <p>1. Në cilën periudhë jetoi Sami Frashëri?</p>
+        <label><input type="radio" name="q1" value="a" /> 1750-1800</label><br />
+        <label><input type="radio" name="q1" value="b" /> 1850-1904</label><br />
+        <label><input type="radio" name="q1" value="c" /> 1900-1950</label><br />
+      </div>
+
+      <div class="question">
+        <p>2. Cila është vepra më e njohur politike e Sami Frashërit?</p>
+        <label><input type="radio" name="q2" value="a" /> Kamus al-Alam</label><br />
+        <label><input type="radio" name="q2" value="b" /> Shqipëria ç’ka qenë, ç’është dhe ç’do të bëhet</label><br />
+        <label><input type="radio" name="q2" value="c" /> Abetarja shqipe</label><br />
+      </div>
+
+      <div class="question">
+        <p>3. Cili ishte qëllimi kryesor i veprës "Shqipëria ç’ka qenë, ç’është dhe ç’do të bëhet"?</p>
+        <label><input type="radio" name="q3" value="a" /> Të promovojë kulturën turke</label><br />
+        <label><input type="radio" name="q3" value="b" /> Të frymëzojë pavarësinë dhe identitetin shqiptar</label><br />
+        <label><input type="radio" name="q3" value="c" /> Të përkthente libra të huaj</label><br />
+      </div>
+
+      <div class="question">
+        <p>4. Në çfarë gjuhe u botua Kamus al-Alam?</p>
+        <label><input type="radio" name="q4" value="a" /> Shqip</label><br />
+        <label><input type="radio" name="q4" value="b" /> Turqisht</label><br />
+        <label><input type="radio" name="q4" value="c" /> Frëngjisht</label><br />
+      </div>
+
+      <button type="button" onclick="checkQuiz()">Dërgo përgjigjet</button>
+    </form>
+
+    <div id="result" style="margin-top:20px; font-weight:bold; color:#003049;"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Faqja për Sami Frashërin. Realizuar nga Ersi Spiro,Irsian Hashorva,Mendi Gerbolli, Kledi Koci.</p>
+  </footer>
+
+  <script>
+    function checkQuiz() {
+      const answers = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'b',
+        q4: 'b'
+      };
+
+      let score = 0;
+      const total = Object.keys(answers).length;
+
+      for (let q in answers) {
+        const selected = document.querySelector('input[name="' + q + '"]:checked');
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      const resultDiv = document.getElementById('result');
+      if (score === total) {
+        resultDiv.textContent = `Përgëzime! Ke marrë ${score} nga ${total} pikë.`;
+      } else {
+        resultDiv.textContent = `Rezultati yt: ${score} nga ${total} pikë. Mundohu më shumë!`;
+      }
+    }
+  </script>
+</body>
+</html>
